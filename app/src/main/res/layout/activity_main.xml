@@ -30,7 +30,7 @@
             android:completionThreshold="1"
             android:hint="Введите аэропорт или код IATA"
             android:inputType="text"
-            android:paddingEnd="40dp" />  <!-- Добавляем отступ справа, чтобы текст не заходил под кнопку -->
+            android:paddingEnd="40dp" />
 
         <ImageButton
             android:id="@+id/clearButton"
@@ -41,7 +41,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Очистить"
             android:src="@android:drawable/ic_menu_close_clear_cancel"
-            android:visibility="gone" /> <!-- Изначально скрыта -->
+            android:visibility="gone" />
 
     </RelativeLayout>
 

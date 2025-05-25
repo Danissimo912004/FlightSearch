@@ -21,7 +21,6 @@ class FlightViewModel(
     private val _clearSearchEvent = Channel<Unit>(Channel.BUFFERED)
     val clearSearchEvent = _clearSearchEvent.receiveAsFlow()
 
-    // Зависимые флоу
     val destinationsFromSelectedAirport: StateFlow<List<Airport>> = _selectedAirport
         .filterNotNull()
         .flatMapLatest { iataCode ->
@@ -83,17 +82,15 @@ class FlightViewModel(
         }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
-    // Обновляем поисковый запрос
+
     fun updateSearchQuery(query: String) {
         _searchQuery.value = query
     }
 
-    // Обновляем выбранный аэропорт
     fun updateSelectedAirport(iata: String?) {
         _selectedAirport.value = iata
     }
 
-    // Вставляем начальный список аэропортов
     fun insertInitialAirports(airports: List<Airport>) {
         viewModelScope.launch {
             repository.insertAirports(airports)
