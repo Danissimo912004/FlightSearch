@@ -2,7 +2,6 @@ package com.example.flightsearch.data
 
 import android.content.Context
 import androidx.room.Room
-import com.example.flightsearch.data.AppDatabase
 
 object DatabaseProvider {
 

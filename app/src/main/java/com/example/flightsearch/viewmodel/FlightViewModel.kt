@@ -21,13 +21,6 @@ class FlightViewModel(
     private val _clearSearchEvent = Channel<Unit>(Channel.BUFFERED)
     val clearSearchEvent = _clearSearchEvent.receiveAsFlow()
 
-    // Зависимые флоу
-    val destinationsFromSelectedAirport: StateFlow<List<Airport>> = _selectedAirport
-        .filterNotNull()
-        .flatMapLatest { iataCode ->
-            repository.getDestinationsFromAirport(iataCode)
-        }
-        .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
     val routesFromSelectedAirport: StateFlow<List<Route>> = _selectedAirport
         .filterNotNull()

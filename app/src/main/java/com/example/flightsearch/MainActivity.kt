@@ -155,7 +155,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-// Вспомогательный класс для удобства объединения данных
+// Вспомогательный класс
 data class QuerySelectedData(
     val query: String,
     val selectedIata: String?,
