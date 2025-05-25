@@ -114,7 +114,6 @@ class FlightViewModel(
         }
     }
 
-    // Триггерим событие очистки поиска
     fun triggerClearSearch() {
         viewModelScope.launch {
             _clearSearchEvent.send(Unit)
