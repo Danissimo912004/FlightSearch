@@ -9,16 +9,27 @@ object DatabaseProvider {
     private var INSTANCE: AppDatabase? = null
 
     fun getDatabase(context: Context): AppDatabase {
-        return INSTANCE ?: synchronized(this) {
-            val instance = Room.databaseBuilder(
+        val tempInstance = INSTANCE
+        if (tempInstance != null) {
+            return tempInstance
+        }
+
+        synchronized(this) {
+            val instance = INSTANCE
+            if (instance != null) {
+                return instance
+            }
+
+            val newInstance = Room.databaseBuilder(
                 context.applicationContext,
                 AppDatabase::class.java,
                 "FlightSearch.db"
             )
-                .createFromAsset("databases/FlightSearch.db") // если база из assets
+                .createFromAsset("databases/FlightSearch.db")
                 .build()
-            INSTANCE = instance
-            instance
+
+            INSTANCE = newInstance
+            return newInstance
         }
     }
 }
