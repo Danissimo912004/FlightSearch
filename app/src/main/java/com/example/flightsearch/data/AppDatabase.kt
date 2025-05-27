@@ -1,7 +1,6 @@
 package com.example.flightsearch.data
 
 
-import com.example.flightsearch.data.AirportDao
 import androidx.room.Database
 import androidx.room.RoomDatabase
 
